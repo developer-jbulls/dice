@@ -44,14 +44,37 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Observer(
-          builder: (_) => GestureDetector(
-              onTap: state.roll,
-              child: Image.asset(
-                'assets/images/${state.dice}.png',
-                height: 100,
-                width: 100,
-              ),
-            )
+          builder: (_) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: state.rollLeft,
+                      child: Image.asset(
+                        'assets/images/${state.diceLeft}.png',
+                        height: 100,
+                        width: 100,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: state.rollRight,
+                      child: Image.asset(
+                        'assets/images/${state.diceRight}.png',
+                        height: 100,
+                        width: 100,
+                      ),
+                    ),
+                  ],
+                ),
+                Text('total: ${state.total}'),
+              ],
+            );
+          }
         ),
       ),
     );

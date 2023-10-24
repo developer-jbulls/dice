@@ -8,10 +8,20 @@ class AppState = _AppStateBase with _$AppState;
 
 abstract class _AppStateBase with Store {
   @readonly
-  int _dice = Random().nextInt(6) + 1;
+  int _diceLeft = Random().nextInt(6) + 1;
+
+  @readonly
+  int _diceRight = Random().nextInt(6) + 1;
+
+  @computed
+  int get total => _diceLeft + _diceRight;
 
   @action
-  void roll() {
-    _dice = Random().nextInt(6) + 1;
+  void rollLeft() {
+    _diceLeft = Random().nextInt(6) + 1;
+  }
+  @action
+  void rollRight() {
+    _diceRight = Random().nextInt(6) + 1;
   }
 }
